@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ current_category }} - Список курсов</title>
-</head>
-<body>
-    <h1>Список курсов:</h1>
-    <h2>Категория: {{ current_category }}</h2>
-    <div>
-        <a href= "{% url 'index' %}">Главная</a>
-        {% for category in categories %}
-        <a href="{% url 'by_category' category.pk %}">{{ category.name }}</a>
-        {% endfor %}
-        <a href="{% url 'add' %}">Создать курс</a>
-    </div>
-    {% for course in courses %}
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ current_category.name }}{% endblock %}
+
+{% block content %}
+ <h2>Категория: {{ current_category.name }}</h2>
+{% for course in courses %}
     <div>
         <h2>{{ course.title }}</h2>
         <p> {{ course.description }} </p>
         <p> {{ course.published|date:"d.m.Y H:i:s" }} </p>
     </div>
-    {% endfor %}
-</body>
-</html>
+{% endfor %}
+{% endblock %}
