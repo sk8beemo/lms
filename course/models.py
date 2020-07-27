@@ -6,7 +6,7 @@ class Course(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название курса')
     description = models.TextField(null=True, blank=True, verbose_name='Описание')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата создания')
-    category = models.ForeignKey('Category', null=True, on_delete=models.PROTECT, verbose_name='Категория')
+    category = models.ForeignKey('Category',  blank=True, on_delete=models.PROTECT, verbose_name='Категория')
 
     class Meta:
         verbose_name_plural = 'Курсы'

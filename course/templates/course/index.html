@@ -4,7 +4,9 @@
 {% for course in courses %}
         <div>
             <h2>{{ course.title }}</h2>
+            {% if course.category %}
             <p><a href="{% url 'by_category' course.category.pk %}"> {{ course.category }} </a></p>
+            {% endif %}
             <p> {{ course.description }} </p>
             <p> {{ course.published|date:"d.m.Y H:i:s" }} </p>
         </div>
