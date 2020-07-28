@@ -1,0 +1,37 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+<h2>{{ course }}</h2>
+{% for lesson in lessons %}
+<p>{{ lesson.title }}</p>
+{% endfor %}
+<button class="open-button" onclick="openForm()">Добавить урок</button>
+
+<div class="form-popup" id="myForm">
+	  <form action="{% url 'add_lesson' course.id %}" method="post" class="form-container">
+    {% csrf_token %}
+    {{ form }}
+    <div>
+      <label for="id_title">Название урока:</label>
+      <input type="text" name="title" maxlength="50" required id="id_title">
+      {{ form.title }}
+    </div>
+    <div>
+      <label for="id_description">Описание урока:</label>
+      <textarea name="description" cols="40" rows="10" id="id_description"></textarea>
+      {{ form.description }}
+    </div>
+    <button type="submit" class="btn">Создать</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
+  </form>
+</div>
+  <script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  </script>
+{% endblock %}

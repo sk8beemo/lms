@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Course, Category
+from .models import Course, Category, Lesson
 
 # Register your models here.
 class CourseAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Category)
+admin.site.register(Lesson)
