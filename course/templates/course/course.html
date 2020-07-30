@@ -3,8 +3,13 @@
 {% block content %}
 <h2>{{ course }}</h2>
 {% for lesson in lessons %}
-<p>{{ lesson.title }}</p>
+<div>
+    <a href="{% url 'lesson_detail' lesson.pk %}"><h3>{{ lesson.title }}</h3></a>
+    <p>{{ lesson.description }}</p>
+</div>
 {% endfor %}
+<button class="setting-button" onclick="updateCourse()">Редактировать курс</button>
+<button class="delete-button" onclick="deleteForm()">Удалить курс</button>
 <button class="open-button" onclick="openForm()">Добавить урок</button>
 
 <div class="form-popup" id="myForm">
@@ -13,17 +18,23 @@
     {{ form }}
     <div>
       <label for="id_title">Название урока:</label>
-      <input type="text" name="title" maxlength="50" required id="id_title">
+      <input type="text" name="title" required id="id_title">
       {{ form.title }}
     </div>
     <div>
       <label for="id_description">Описание урока:</label>
-      <textarea name="description" cols="40" rows="10" id="id_description"></textarea>
+      <textarea name="description" id="id_description"></textarea>
       {{ form.description }}
     </div>
     <button type="submit" class="btn">Создать</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
   </form>
+</div>
+<div class="form-popup" id="delete_open">
+    <form action="{% url 'delete_course' course.id %}" method="post">{% csrf_token %}
+    <p>Вы уверены, что хотите удалить "{{ course.title }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
 </div>
   <script>
   function openForm() {
@@ -32,6 +43,14 @@
 
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
+  }
+
+function deleteForm() {
+    document.getElementById('delete_open').style.display = "block";
+}
+
+  function updateCourse(){
+    window.location.href = "{% url 'edit_course' course.id %}";
   }
   </script>
 {% endblock %}

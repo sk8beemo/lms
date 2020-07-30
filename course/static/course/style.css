@@ -16,6 +16,14 @@ nav a {
 section {
   margin-left: 230px;
 }
+section div {
+  border: 1px solid gray;
+  -webkit-box-shadow: 8px 8px 23px 0px rgba(0,0,0,0.36);
+  -moz-box-shadow: 8px 8px 23px 0px rgba(0,0,0,0.36);
+  box-shadow: 8px 8px 23px 0px rgba(0,0,0,0.36);
+  margin-bottom: 10px;
+  padding: 20px;
+}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -26,16 +34,39 @@ section {
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  bottom: 23px;
+  top: 23px;
   right: 28px;
   width: 280px;
 }
-
+.setting-button{
+  background-color: green;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  top: 23px;
+  right: 308px;
+  width: 280px;
+}
+.delete-button {
+  background-color: red;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  top: 71px;
+  right: 308px;
+  width: 280px;
+}
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
   position: fixed;
-  bottom: 0;
+  top: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
@@ -72,7 +103,7 @@ section {
   cursor: pointer;
   width: 100%;
   margin-bottom:10px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Add a red background color to the cancel button */

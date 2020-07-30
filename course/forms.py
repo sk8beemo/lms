@@ -3,7 +3,7 @@ from django.forms import ModelForm, Textarea
 from .models import Course, Lesson
 
 
-class CourseForm(ModelForm):
+class CourseCreateForm(ModelForm):
     """Форма создания нового курса"""
     class Meta:
         model = Course

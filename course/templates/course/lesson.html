@@ -1,0 +1,17 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+<h2>Урок id {{ lesson.title }}</h2>
+<button class="delete-button" onclick="deleteForm()">Удалить урок</button>
+<div class="form-popup" id="delete_open">
+    <form action="{% url 'delete_lesson' lesson.id %}" method="post">{% csrf_token %}
+    <p>Вы уверены, что хотите удалить "{{ lesson.title }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+</div>
+  <script>
+function deleteForm() {
+    document.getElementById('delete_open').style.display = "block";
+}
+  </script>
+{% endblock %}
